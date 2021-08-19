@@ -7,7 +7,7 @@ title: "Información Básica"
 # {{page.title}}
 
 ### Clases:
-Horario: 14:00-18:30\\
+Horario: 14:00-18:30
 <s>Sala Javier Pinto, DCC</s>
 
 ### Profesor:
