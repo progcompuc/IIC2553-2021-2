@@ -73,6 +73,8 @@ title: Recursos
   - [Codeforces - ACM ICPC 2017 Latin America Finals](https://codeforces.com/blog/entry/55700)
   - [Codeforces - ACM ICPC 2018 Latin America Finals](https://codeforces.com/blog/entry/63157)
   - [Codeforces - ACM ICPC 2019 Latin America Finals](https://codeforces.com/blog/entry/71296)
+  - [Codeforces - ACM ICPC 2020 Latin America Finals](https://codeforces.com/blog/entry/92792)
+  - Explicaciones de problemas 2020: [Discussão dos problemas da Final](https://youtu.be/rc0YWBqmr-E)
 - [Google Sheet con soluciones de las últimas regionales (WIP)](https://docs.google.com/spreadsheets/d/1F8aBV83xKPVFfq_A0EKhCa8qbjf0gKKg8puQF-rbonQ/)
 
 ## Soluciones, Inputs y Outputs oficiales de Regionales
