@@ -8,7 +8,7 @@ title: "Información Básica"
 
 ### Clases:
 Horario: 14:00-18:30\\
-<s>Sala Javier Pinto, DCC</s> Remoto
+<s>Sala Javier Pinto, DCC</s>
 
 ### Profesor:
 Pablo Messina (<pamessina@uc.cl>)
