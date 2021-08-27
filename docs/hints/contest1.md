@@ -24,75 +24,58 @@ title: contest 1 - hints y códigos de ejemplo
    Simular hasta que el máximo quede al comienzo. De ahí en adelante los que están a la derecha del máximo van rotando. Para las queries que van antes del ciclo responde con lo simulado, y para las queries que caen dentro del ciclo calcula modularmente cual va a ser el elemento sacado. <a href="https://github.com/PabloMessina/Competitive-Programming-Material/blob/master/Solved%20problems/Codeforces/1180C_ValeriyAndDeque.cpp">Código de ejemplo</a>
 </details>
 
-
 ### C - Roadwork
 <details> 
-   <summary>Hints</summary>
-   1) En vez de pensar "esta persona, en qué obra se detiene?" puedes pensar "esta obra, a qué personas detiene?".
-   2) Si una obra detiene a alguien, las obras a la derecha ya no lo pueden detener. Ve las obras en ese orden.
-   3) Si tienes a las personas ordenadas por tiempo de salida, puedes saber en log n quién va a ser la primera persona en ser bloqueada por cierta obra.
-</details>
-<details> 
-  <summary>Solución</summary>
-   Ordena las obras e itera por ellas de izquierda a derecha. 
-   Para cada obra, calcula qué tiempos de salida van a ser bloqueados, osea S-X <= D < T-X, y elimina a estas personas de la lista.
-   La posicion de la obra es el punto de llegada para estas personas.
-   Esto se puede hacer en (#personas x log n) con un multiset.
-   El tiempo total es O(N + Q log Q).
-</details>
-<details> 
-  <summary>Hints 2</summary>
-   Piensa el problema geométricamente en un plano de Tiempo vs Posición
-</details>
-<details> 
-  <summary>Solución 2 + código</summary>
-   En el plano 2D las personas se ven como rectas diagonales y los roadworks como segmentos de recta horizontales. Cada persona se detiene con el primer segmento que se intersecta. Para hacerlo eficientemente, podemos hacer un sweep line diagonal manteniendo un set de segmentos activos ordenados de menor a mayor. La complejidad es O((N+Q) log (N+Q) + N log N + Q). <a href="https://github.com/PabloMessina/Competitive-Programming-Material/blob/master/Solved%20problems/AtCoder/abc128_e_Roadwork.cpp">Código de ejemplo</a>
-</details>
-
-### D - Two Teams
-<details>
-  <summary> Hint </summary>
-  Puedes mantener a los estudiantes en un arbol ordenado por *skill* para poder 1) Determinar quien tiene la mayor *skill* en O(log(n)), y 2) Poder eliminar a los estudiantes que van saliendo en O(log(n)) cada uno
-</details>
-<details>
-  <summary> Hint 2</summary>
-  Puedes mantener a los estudiantes en una lista ligada para poder en O(1) determinar quien esta al lado de otro y sacarlo (o en un arbol ordenado por indice para hacerlo en O(log(n))).
-</details>
-<details>
-  <summary> Solucion + Codigo </summary>
-  Usar los dos hints anteriores, y repetir
-  
-  1. Determinar cual es el estudiante con la mayor *skill* y sacarlo
-  2. Sacar *k* estudiantes a la derecha e izquierda utilizando la lista o arbol
-
-  hasta que ya no queden mas estudiantes. A medida que se sacan estudiantes de la lista, asignarlos al equipo 1 o 2 como corresponde.
-  <a href="https://github.com/ProgramacionCompetitivaPUC/IIC2553-2019-2/blob/master/code_samples/contest1/C_TwoTeams.cpp">Código de ejemplo</a>
-</details>
-
-### E - Memory Management
-<details>
   <summary>Hint 1</summary>
-  Puedes mantener los numeros de bloques de memoria libres en un set o priority queue para poder ver cual es el numero de bloque de memoria libre mas bajo para poder asignarlo
+  Para facilitar el análisis, en vez de pensar para cada persona con qué obstáculo choca, lo podemos ver como para cada obstáculo, qué personas detiene.
+  Podemos ver que el obtáculo en X entre S y T detiene a la persona que parte en D si S - X <= D < T - X.
 </details>
-<details>
-  <summary>Hint 2</summary>
-  Puedes mantener un set con los bloques de memoria asignados ordenados por tiempo de manera de poder 1) Determinar el bloque mas antiguo en O(log(n)) para ser removido, y 2) Poder cambiar el tiempo de un bloque cuando se accede a el. Ademas necesitas un map de numero de bloque a bloque de memoria, para poder acceder al bloque de memoria correcto cuando llega una query por un numero de bloque.
-</details>
-<details>
-  <summary>Solucion + Codigo</summary>
-  Usar los dos hints anteriores simplemente.
-  <a href="https://github.com/ProgramacionCompetitivaPUC/IIC2553-2019-2/blob/master/code_samples/contest1/D_MemoryManagement.cpp">Código de ejemplo</a>
-</details>
-
-### F - Weird Function
-
 <details> 
-  <summary>Hint</summary>
-  Piensa en una forma eficiente de trackear la mediana.
+  <summary>Hint 2</summary>
+  Si analizamos los obstáculos y las personas en orden temporal (obstáculos tomando tiempo entre los que si una persona sale choca con el) y llevamos cuenta de los intervalos activos, podemos responder la distancia que caminará (en caso de parar) si mantenemos la posición de los obstáculos en una estructura ordenada.
 </details>
 <details> 
   <summary>Solución + código</summary>
-  Una forma de trackear la mediana es guardando la mitad inferior de los valores en un maxheap y la mitad superior de los valores en un minheap, manteniendo la invariante de que la mediana siempre se encuentre en el tope del maxheap. Cuando agreguemos un nuevo valor, lo comparamos con la mediana actual y lo metemos en el minheap o maxheap según corresponda, teniendo cuidado de mantener los 2 contenedores balanceados en tamaño para mantener la invariante. Insertar y meter en heaps es O(log N) así que la complejidad total es O(N log N). <a href="https://github.com/PabloMessina/Competitive-Programming-Material/blob/master/Solved%20problems/SPOJ/WEIRDFN_WeirdFunction.cpp">Código de ejemplo</a>
+  Podemos generar un vector de eventos temporales el cual recorreremos en orden, los eventos pueden ser, empieza el efecto de un obstáculo (S - X como en Hint 1), termina el efecto de un obstáculo y sale una persona. Al recorrer el vector, basta mantener un multiset ordenado con la posición de los obstáculos que estén activos para poder responder la distancia caminada para cada persona en O(1) cuando salga el evento correspondiente y con updates en O(log N) al empezar o terminar alguno.
+  La complejidad total de esta solución es O((N + Q) log(N + Q))
+  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/AtCoder/Roadwork.cpp">Solución ejemplo</a>
+</details>
+
+### D - Two Teams
+<details> 
+  <summary>Hint 1</summary>
+  Podemos ordenar los estudiantes del con mayor habilidad al con menos habilidad podemos agregarlos a un MaxHeap, que agrega elementos en O(log N), consulta por el mayor en O(1) y quita el mayor en O(log N).
+</details>
+<details> 
+  <summary>Hint 2</summary>
+  Podemos visitar uno por uno los estudiantes y marcar el equipo correspondiente a los alumnos k a la derecha y a la izquierda no marcados, el problema es que si visitamos muchas veces estudiantes no marcados el algoritmo no cae en el límite de tiempo. Debemos encontrar una forma de no visitar más que una vez cada estudiante. Una estructura perfecta para esto es una lista ligada tal que podamos eliminar segmentos de un arreglo en O(1).
+</details>
+<details> 
+  <summary>Solución + código</summary>
+  Recorremos en orden los estudiantes, para cada uno, si no ha sido marcado marcamos k a la derecha y a la izquierda de la lista y eliminamos el segmento.
+  Podemos simular la lista ligada usando vectores R, L, tal que R[i] indica qué indice está actualmente a la derecha de i y L[i] a la izquierda de i. al eliminar un segmento sólo debemos unir el de la izquierda del primer eliminado con el de la derecha del último, así en consultas siguientes no se pasará por lo eliminado.
+  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Codeforces/TwoTeams.cpp">Código de ejemplo</a>
+</details>
+
+### E - Memory Management
+<details> 
+  <summary>Hint</summary>
+   El problema se puede modelar como una simulación de eventos en el tiempo, desempatando por id. Los bloques libres también se pueden modelar con una estructura que priorice de izquierda a derecha.
+</details>
+<details> 
+  <summary>Solución + código</summary>
+  Podemos definir un struct Event para modelar eventos que pueden ser de 3 tipos: memory allocation, memory access y memory release. Los eventos los podemos simular en orden en una priority queue, sacando el siguiente evento del tope dentro de un while. Los eventos de alloc y access son los dados por el input. Los eventos de release los agregamos a medida que vamos simulando y un alloc o access es exitoso. Notar que los release pueden quedar obsoletos (por ej. un access puede extender el periodo de ocupación de un bloque, entonces eventos de release con un timestamp menor ya no son válidos), por lo tanto hay que registrar el último release time por bloque y comparar contra eso para descartar los release obsoletos. A su vez, los bloques de memoria libres se pueden modelar con una priority_queue también (para ir sacando siempre el de más a la izquierda). <a href="https://github.com/PabloMessina/Competitive-Programming-Material/blob/master/Solved%20problems/acm.timus.ru/1037_MemoryManagement.cpp">Código de ejemplo</a>
+</details>
+
+### F - Weird Function
+<details> 
+  <summary>Hint</summary>
+  La clave del problema es ordenar los datos de una forma que permita acceder eficientemente a la mediana de estos ordenados.
+</details>
+<details> 
+  <summary>Solución + código</summary>
+  Podemos mantener un MaxHeap con la mitad inferior de los datos y un MinHeap con la mitad superior de los datos, tal que podemos acceder a la mediana como el tope del MaxHeap inferior en O(1). Cada vez que agregamos un dato lo agregamos al MaxHeap, si el mayor del MaxHeap es mayor que el menor del MinHeap hacemos un swap de estos datos, y si se desequilibran en tamaño pasamos el mayor del MaxHeap al MinHeap.
+  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/SPOJ/WeirdFunction.cpp">Código de ejemplo</a>
 </details>
 
 ### G - Criss-cross Cables
@@ -107,51 +90,48 @@ title: contest 1 - hints y códigos de ejemplo
 </details>
 
 ### H - equeue
-<details>
-  <summary>Hint</summary>
-  Nunca es necesario botar items de la mano y luego seguir tomando items. Siempre se pueden botar todos los items al final.
-</details>
-<details>
-  <summary>Hint 2</summary>
-  Si todos los items se van a botar al final, entonces no importa el orden en el que se tomen items de la derecha e izquierda del cilindro
-</details>
-<details>
-  <summary>Solucion + Codigo</summary>
-  Sea L el numero de items que tomamos de la izquierda, R el numero de items que tomamos de la derecha, y V(L,R) el valor que obtenemos de tomar estos items y luego botar los K-(L+R) items mas negativos (o botar todos los items negativos si hay menos que K-(L+R)). Podemos calcular V(L,R) en O(n), y hay n^2 combinaciones posibles de L,R. Por lo tanto, podemos calcular todos los posibles valores de V(L,R) en O(N^3) y quedarnos con el maximo.
-  <a href="https://github.com/ProgramacionCompetitivaPUC/IIC2553-2019-2/blob/master/code_samples/contest1/H_equeue.cpp">Código de ejemplo</a>
-</details>
-
-### I - Cat Party (Hard Edition)
 
 <details> 
   <summary>Hint</summary>
-  Imaginemos que tenemos un leaderboard / ranking donde los competidores son los colores y sus scores son sus frecuencias, y sólo aparecen colores con scores positivos. Si le quitamos 1 punto a algún color, para que en el leaderboard nos aparezcan todos empatados necesitamos que haya un color que tenga exactamente 1 punto y que todos los demás estén empatados (así le quitamos 1 al de 1 punto y se borra) o bien que haya un color que tenga 1 más que el resto (le restamos 1 a ese y todos quedan empatados). Además, cada día hay que actualizar el leaderboard ya que el score de algún color aumenta en 1. Piensa en una forma eficiente de hacer todo eso.
+   Notar que los límites son chiquitos, así que podemos ponernos en todos los casos de sacar por la izquierda y la derecha.
 </details>
 <details> 
   <summary>Solución + código</summary>
-  Básicamente hacer lo que dice el hint usando un set e iteradores. <a href="https://github.com/PabloMessina/Competitive-Programming-Material/blob/master/Solved%20problems/Codeforces/1163B2_CatParty(HardEdition).cpp">Código de ejemplo</a>
+   Nos ponemos en todos los casos: hacemos dos fors, uno sobre la cantidad de valores que sacamos por la izquierda (L) y otro for sobre la cantidad de valores que sacamos por la derecha (R). Eso define nuestra mano. Luego, con las K-L-R jugadas que nos quedan, codiciosamente las gastamos en botar valores negativos, del más negativo al menos negativo. Eso se puede hacer con una priority_queue. La respuesta va a ser el mejor caso encontrado. <a href="https://github.com/PabloMessina/Competitive-Programming-Material/blob/master/Solved%20problems/AtCoder/abc128_d_equeue.cpp">Código de ejemplo</a>
+</details>
+
+### I - Cat Party
+<details> 
+  <summary>Hint</summary>
+  Si pudieramos mantener conteo de las frecuencias de cada color hasta el índice i, este será válido en 3 casos, si todos son del mismo color, si hay un color con frecuencia 1 y todo el resto son iguales o si todos son iguales excepto un color con frecuencia 1 más que el resto. En todos estos casos eliminar 1 funcionaría. Piensen en una forma de mantener frecuencias y poder chequear esos casos eficientemente.
+</details>
+<details> 
+  <summary>Solución + código</summary>
+  Si iteramos por índice y mantenemos un multiset ordenado con las frecuencias de cada color que hemos visto podemos chequear todos los casos eficientemente usando iteradores. El primer caso se chequearía viendo si el tamaño del multiset es 1, el segundo caso si el elemento más pequeño del multiset es 1 y el siguiente es igual al último, y el último caso si el último elemento del múltiset es igual al primero - 1 y el primero es igual al penúltimo.
+  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Codeforces/CatParty.cpp">Código de ejemplo</a>
 </details>
 
 ### J - Who is The Boss
 <details> 
-  <summary>Hint 1</summary>
-   Lo ideal sería encontrar el jefe inmediato de cada empleado, teniendo eso es fácil armar un grafo (en realidad un árbol) y saber cuántos subordinados en total tiene cada empleado.
+  <summary>Hint</summary>
+  Podemos ir acumulando la cantidad de subordinados de cada empleado, si todos parten en 0 al ver cual es el jefe los subordinados se le suman.
+  Si ordenamos los empleados por salario, todos aquellos empleados ya visitados que no tengan jefe y de altura menor o igual a la del empleado actual serán subordinados y la cantidad de subordinados se acumula. Piensen en una forma eficiente de mantener ordenados los empleados ya visitados sin jefe para hacer eso.
 </details>
 <details> 
-  <summary>Hint 2</summary>
-   Para encontrar el jefe inmediato de cada empleado, piensa en alguna forma de ordenar los empleados lexicográficamente de tal modo que puedas iterar sobre ellos y en cada paso ir actualizando alguna estructura de datos que te permita encontrar el jefe inmediato del empleado actual en la iteración.
-</details>
-<details> 
-  <summary>Hint 3</summary>
-   Suponiendo que ya lograste armar el grafo (árbol), ten cuidado de no realizar cómputos innecesarios para encontrar la cantidad de subordinados .. quizás podrías usar ... (spoiler alert) ... programación dinámica sobre el árbol?
-</details>
-<details>
   <summary>Solución + código</summary>
-   Ordena los empleados por altura de mayor a menor y en caso de empate desempata por sueldo (de mayor a menor). Así, para cada empleado se cumple que todos los empleados con altura mayor estricta están a su izquierda, y de los empleados que le empatan en altura los que le ganan en sueldo están a la izquierda también (y así, si el empleado i-ésimo tiene algún jefe inmediato, dicho jefe necesariamente aparece antes que él en la lista). Para encontrar al jefe inmediato, lo que hacemos es mantener a todos los empleados vistos hasta el momento ordenados por sueldo en un árbol binario balanceado (un set de C++). Si insertamos al empleado actual en el set, el empleado que queda justo a su derecha es el menor con sueldo mayor estricto y altura mayor o igual, así que ese es el jefe inmediato. Haciendo eso para cada empleado encontramos todos los jefes inmediatos y con eso es fácil armar un árbol y hacer programación dinámica sobre el árbol para contar los subordinados de todos los empleados, y finalmente responder las queries. La complejidad de esto O(N log N) por ordenar N empleados, O(N log N) por iterar sobre los empleados y actualizar el set en cada paso y O(N) por hacer DP sobre el árbol y responder las queries, lo que da una complejidad total de O (N log N + N). <a href="https://github.com/PabloMessina/Competitive-Programming-Material/blob/master/Solved%20problems/SPOJ/VBOSS_WhoIsTheBoss.cpp">Código de ejemplo</a>
+  Si visitamos a los empleados según salario como en el Hint 1, basta mantener un set ordenado o un MinHeap de los empleados ya visitados sin jefe ordenados or altura, luego para cada empleado, agregamos como subordinados a todos aquellos miembros del MinHeap con altura menor o igual a la actual, acumulamos el conteo de subordinados y eliminamos del MinHeap.
+  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/SPOJ/WhoIsTheBoss.cpp">Código de ejemplo</a>
 </details>
 
-### K - Daunting device
-<a href="https://github.com/PabloMessina/Competitive-Programming-Material/blob/master/Solved%20problems/URI/DauntingDevice.cpp">Código de ejemplo</a>
+### K - Daunting Device
+<details> 
+  <summary>Hint</summary>
+  Pensar el problema como intervalos de colores. Inicialmente partimos con un intervalo [0, L-1] pintado todo de color 1, y en cada iteración estamos haciendo una actualización que nos deja una nueva secuencia de intervalos.
+</details>
+<details> 
+  <summary>Solución + código</summary>
+  Definimos un struct Interval con 3 variables: índice donde comienza, índice donde termina y color. Además mantenemos un std::set de C++ (un set ordenado) con los intervalos de colores actuales (inicialmente {0, L-1, 1}). Para saber cuántas veces aparece un color, mantenemos un arreglo o vector "freq" (o como quieran llamarle) con las frecuencias de cada color. Luego nos queda implementar el código que ejecuta los N updates. Calculamos M1 y M2 según enunciado. Luego debemos encontrar la secuencia de intervalos en nuestro set que son afectados por el update. Esto se puede hacer usando s.lower_bound() y manipulando iteradores (ver código de ejemplo si te complicas mucho con esto, aunque intenta primero revisar el material del curso sobre sets de C++ y sobre iteradores). Luego podemos borrar todos intervalos con s.erase(), insertar el nuevo intervalo y posiblemente insertar 2 intervalos nuevos en los bordes (si es que nuestro update borra parcialmente algunos de los 2 intervalos vecinos (izquierdo y/o derecho)). Luego de los N updates, la respuesta es el máximo en un nuestro arreglo/vector "freq".  <a href="https://github.com/PabloMessina/Competitive-Programming-Material/blob/master/Solved%20problems/URI/DauntingDevice.cpp">Código de ejemplo</a>
+</details>
 
 <!-- <details> 
   <summary>Hint</summary>   
