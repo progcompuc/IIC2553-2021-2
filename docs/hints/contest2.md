@@ -4,144 +4,93 @@ title: contest 2 - hints y códigos de ejemplo
 
 [Index](../index) > [Contests](../contests) > [Contest 2](../contests#contest-2) > ```{{page.title}}```
 
-### A - Reversed Binary Numbers
+### A - Four Segments
 <details> 
-  <summary>Hint</summary>
-  Si bien en python hay funciones que entregan la representación binaria de un número, traten de construirla, recuerden los operadores bitwise vistos en la última clase.
+  <summary>Hint</summary>   
+  Consideren todas las características necesarias de los segmentos de un rectángulo.
 </details>
 <details> 
   <summary>Solución + código</summary>
-  Podemos obtener la representación binaria de un número con operadores bitwise, por ejemplo para ver si el bit i está prendido consultamos ((N >> i) & 1), de todas formas podemos obtener la representación binaria inversa consultando siempre por el primer bit y trasladando los bits, es decir, si N = (1011) en binario, consultamos por el primer bit preguntando si es impar, en caso de estar prendido acumulamos un 1 en otra respuesta y trasladamos N a la izquierda dividiendo por 2 y la respuesta a la derecha multiplicando por 2, para N = (1011) pasaríamos a (101) y la respuesta a (10), luego N a (10) y la respuesta a (110), luego N a (1) y la respuesta a (1100) y finalmente N a (0) y respuesta a (11010), dividimos por 2 la respuesta y retornamos.
-  
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Kattis/ReversedBinaryNumbers.py">Código de ejemplo Python</a>
-  
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Kattis/ReversedBinaryNumbers.cpp">Código de ejemplo C++</a>
+  Hay muchas formas de resolver este problema, una es revisar que se cumplan las siguientes características: 2 segmentos verticales y 2 horizontales, cantidad de puntos totales igual a 4, todos los segmentos son distintos.
+  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Codeforces/FourSegments.cpp">Código de ejemplo</a>
 </details>
 
-### B - Two distinct points
+### B - Nested Dolls
 <details> 
-  <summary>Hint</summary>
-  Basta con elegir un número cualquiera del primer segmento y para el segundo elegir alguno de los vértices, mientras sea distinto al punto elegido para el primer segmento.
+  <summary>Hint</summary> 
+  Piensen en ordenar las muñecas de forma decreciente por ancho y desempatando de forma creciente por altura. Iterando en este orden piensen en una forma de mantener las muñecas que ya vieron para obtener rápidamente la muñeca a la que más conviene juntar.
 </details>
 <details> 
   <summary>Solución + código</summary>
-  Implementar el hint.
-  
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Codeforces/TwoDistinctPoints.py">Código de ejemplo Python</a>
-  
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Codeforces/TwoDistinctPoints.cpp">Código de ejemplo C++</a>
+  Si ordenamos las muñecas segun el hint, podemos mantener las muñecas que ya vimos en un multiset de alturas. Luego en cada momento la muñeca con la que más nos conviene unirnos es la con menor altura mayor a la nuestra. Esto se puede encontrar rápidamente con un lower_bound(h + 1) en el multiset (investigar multisets en c++). Luego se updatea la muñeca en el multiset a la nueva altura interior.
+  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/SPOJ/NestedDolls.cpp">Código de ejemplo</a>
 </details>
 
-### C - Polynomial Multiplication I
+### C - Greg and Array
 <details> 
   <summary>Hint</summary>
-  Multiplicar polinomios en O(N^2) pasa en tiempo, es decir, multipliquen coeficiente a coeficiente.
+  Podemos registrar la cantidad de veces que se termina haciendo cada update usando un arreglo de diferencias, la idea es la siguiente, usamos un arreglo U que empieza con 0's y si queremos hacer los updates entre x e y hacemos U[x] += 1, U[y + 1] += 1, luego despues de todas las queries podemos recorrer el arreglo U y la suma de los valores nos entrega la cantidad de veces que se hace cada update.
 </details>
 <details> 
   <summary>Solución + código</summary>
-  Para multiplicar polinomios basta hacer un doble for en los grados de cada polinomio y multiplicar cada coefs_1[i] * coefs_2[j] asignando la respuesta a coefs_ans[i + j].
-  
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Kattis/PolynomialMultiplication.py">Código de ejemplo Python</a>
-  
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Kattis/PolynomialMultiplication.cpp">Código de ejemplo C++</a>
+  Podemos usar la idea del hint 2 veces, una vez para cuantas veces se hace cada update y otra para saber cuanto se le suma a los A[i], en el caso de la segunda se puede tener un arreglo C donde para cada update hacemos C[L[i]] += d[i] * s, C[R[i] + 1] -= d[i] * s, donde L[i], R[i], d[i] son los límites del update i, y s es la variable acumulada del arreglo U. Finalmente la respuesta final se obptiene recorriendo C. La complejidad final de esta solución termina siendo lineal en N y M.
+  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Codeforces/GregAndArray.cpp">Código de ejemplo</a>
 </details>
 
-### D - Remove Smallest
+### D - They Are Everywhere
 <details> 
   <summary>Hint</summary>
-  Piensen en cómo lo harían si el arreglo estuviera ordenado de mayor a menor.
+  Piensen en cómo calcular rápidamente cual es el menor índice j necesario a visitar asumiendo que empiezo a visitar desde i. Esto se hará para cada indice inicial.
 </details>
 <details> 
   <summary>Solución + código</summary>
-  Si primero ordenamos el arreglo, tendremos que los elementos que buscamos estarán en índices continuos, luego podemos recorrer el arreglo de izquierda a derecha y cada vez que nos encontremos con un salto de más de 1 con el elemento anterior, tendremos que ese elemento (el anterior) no puede ser eliminado y sumamos 1 a la respuesta.
-  
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Codeforces/RemoveSmallest.py">Código de ejemplo Python</a>
-  
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Codeforces/RemoveSmallest.cpp">Código de ejemplo C++</a>
+  Podemos usar arreglos acumulados de aparición de cada letra, como son letras minúsculas y mayúsculas necesitaremos a lo más 54 arreglos. Luego para cada índice de inicio i, podemos encontrar el menor índice necesario j a partir de una búsqueda binaria, sólo se necesita chequear que cada letra ocurra al menos una vez en el rango. La complejidad final es en el peor caso O(54 * N * log N), lo que pasa en tiempo.
+  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Codeforces/TheyAreEverywhere.cpp">Código de ejemplo</a>
 </details>
 
-### E - Counting Stars
+### E - Petya and Exam
 <details> 
   <summary>Hint</summary>
-  Podemos recorrer todas las posiciones, cada vez que nos encontremos con una estrella (con un '-') debemos marcar todo lo perteneciente a esa estrella para no contarla denuevo, piensen en cómo hacer eso.
+  Los eventos interesantes son los momentos en que las preguntas se convierten en obligatorias. Diseña un algoritmo que se ponga en todos esos momentos interesantes.
 </details>
 <details> 
   <summary>Solución + código</summary>
-  Cada vez que nos encontramos una estrella podemos llamar una función recursiva que visite toda la estrella y la marque como contada, para esto la función puede recibir coordenada x e y y llamar recursivamente a la misma función para los vecinos de la coordenada que también sean parte de la estrella y no hayan sido ya visitados por la función luego sólo sumamos uno a la respuesta cada vez que veamos un '-' no marcado como visitado y cada vez que pase llamamos a la función recursiva para marcar como visitada toda esa estrella. Esta técnica de visitar es una aplicación de recorrer grafos con dfs, lo que se verá más adelante.
-  
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Kattis/CountingStars.py">Código de ejemplo Python</a>
-  
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Kattis/CountingStars.cpp">Código de ejemplo C++</a>
+  Ordenamos las preguntas por su tiempo en que se vuelven obligatorias. Iteramos sobre las preguntas y mantenemos contadores sobre la cantidad de preguntas obligatorias easy y hard que hay que hacer. Sea t el instante en que un grupo de preguntas se vuelven obligatorias. Un momento interesante es t-1 (uno antes que se vuelvan obligatorias), en dicho instante se maximiza el tiempo disponible para resolver las preguntas obligatorias que vienen antes. Si en t-1 alcanzamos a hacer todas las obligatorias, el tiempo sobrante lo gastamos codiciosamente en las preguntas fáciles y el resto en las difíciles que sobran. <a href="https://github.com/PabloMessina/Competitive-Programming-Material/blob/master/Solved%20problems/Codeforces/1282C_PetyaAndExam.cpp">Código de ejemplo</a>
 </details>
 
-### F - Pizza Hawaii
+### F - The Queue
 <details> 
-  <summary>Hint</summary>
-  Podemos guardar en diccionarios/maps para cada ingrediente en qué recetas aparece.
+  <summary>Hint 1</summary>
+  Por simplicidad, notar que podemos ignorar toda la gente que llega un tiempo >= tf.
+</details>
+<details> 
+  <summary>Hint 2</summary>
+  Si hubiese algún instante en que pudiesemos llegar y esperar 0, significa que hay una ventana de tiempo entre ts y tf de ancho >= 1 durante la cual la recepcionista está desocupada. Esa ventana tiene cota por la derecha ya sea el instante de llegada de alguien, o bien tf. Podemos cubrir todos esos casos considerando cada instante que llega alguien menos 1, o bien el instante en que se va la última persona (ignorando los que llegan >= tf).
+</details>
+<details> 
+  <summary>Hint 3</summary>
+  Si no fuese posible esperar 0, en cualquier instante que lleguemos siempre quedaremos ubicados atrás de alguien en la cola. Podemos ponernos en todos esos casos suponiendo que llegamos en cada instante que llega alguien menos 1 (el menos 1 es para minimizar la espera).
 </details>
 <details> 
   <summary>Solución + código</summary>
-  Usando el hint basta comparar cada par de ingredientes (uno de cada idioma) y ver si las listas de recetas en que aparecen son iguales. En caso de serlo agregamos ese par a la respuesta. Para devolver los pares en el orden pedido basta hacer un sort a la lista de pares respuesta.
-  
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Kattis/PizzaHawaii.py">Código de ejemplo Python</a>
-  
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Kattis/PizzaHawaii.cpp">Código de ejemplo C++</a>
+  Según lo explicado en los hints, básicamente los únicos instantes interesantes son los tiempos de llegadas menos 1 de cada persona que llega en un t <= tf, o bien el instante en que se desocupa la última persona. Hacemos una simulación de la cola con una queue y la secuencia de instantes de llegada de la gente. Antes de procesar el instante t, sacamos de la cola todos los que se van antes de t (hasta t-1). Ahí vemos qué pasaría si llegamos justo en t-1 y actualizamos la respuesta. Lo mismo para el instante en que se va la última persona. Un caso borde es que nadie llegue <= tf. En ese caso es obvio que la espera es 0 (basta llegar en ts y estamos). <a href="https://github.com/PabloMessina/Competitive-Programming-Material/blob/master/Solved%20problems/Codeforces/767B_TheQueue.cpp">Código de ejemplo</a>
 </details>
 
-### G - Zagrade
+### G - Removing Leaves
 <details> 
   <summary>Hint</summary>
-  Primero debemos obtener una lista de pares de indices correspondientes a pares de paréntesis correlacionados. Para esto basta leer el string dado de izquierda a derecha y tener una lista de posiciones de abre paréntesís aún no acoplados, cada vez que encontremos un cierra paréntesis lo acoplamos con el último abre paréntesis en la lista (y lo quitamos de la lista). Usando esto sólo tenemos que ver todas las combinaciones de pares de paréntesis a eliminar, armar los strings respectivos y ordenar la lista de respuestas.
+  Piensen en una forma de llevar cuenta de cuantas hojas salen de cada nodo. Luego procesando los nodos en el orden de más hojas saliendo a menos podemos resolver el problema. Ojo con mantener updateadas la cantidad de hojas despues de cada operación.
 </details>
 <details> 
   <summary>Solución + código</summary>
-  Usando el hint, para ver cómo generar todas las combinaciones podemos hacerlo con un for que recorra i desde 1 a (2^N - 1), donde N es la cantidad de pares de paréntesis, cada uno de estos valores para i se puede interpretar como un número binario de N bits, donde si el j-ésimo bit está prendido nos indica si eliminar el j-ésimo par de paréntesis de este caso de respuesta, los numeros binarios justo generarán todas las posibilidades en este for. Luego de armados los strings para cada i y puestas en una lista, basta ordenar y retornar.
-  
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Kattis/Zagrade.py">Código de ejemplo Python</a>
-  
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Kattis/Zagrade.cpp">Código de ejemplo C++</a>
+  Una forma de usar el hint es manteniendo un vector o lista L con la cantidad de hojas saliendo de cada nodo (L[u] para el nodo u). Además ir iterando los nodos del con más hojas al que menos usando una priority_queue, luego para cada nodo que revisemos sumamos a los movimientos L[u] / K. Ojo que luego debemos "quitar" estas aristas del grafo y si nos convertimos en hoja sumar 1 a la cantidad de hojas de mi padre y agregarlo a la priority_queue.
+  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Codeforces/RemovingLeaves.cpp">Código de ejemplo</a>
 </details>
 
-### H - Sum
-<details> 
-  <summary>Hint</summary>
-  Primero debemos encontrar una base que genere el mayor largo en la suma, una base que siempre sirve para esto es el mayor dígito que nos dieron en el input + 1.
-</details>
+### H - Jumping Grasshoper
 <details> 
   <summary>Solución + código</summary>
-  Luego basta ir pasando la suma de estos números en la nueva base a la nueva base, podemos hacerlo todo en un while acumulando suma de digitos menores y acumulado anterior, dividiendo por la base en cada paso y dividiendo por 10 los números en cada paso (para quitar el menor dígito).
-  
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Codeforces/Sum.py">Código de ejemplo Python</a>
-  
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Codeforces/Sum.cpp">Código de ejemplo C++</a>
-</details>
-
-### I - Making Sequences is Fun
-<details> 
-  <summary>Hint</summary>
-  Podemos ir agregando los números de n dígitos en bloques mientras sea posible, empezando con n = #(dígitos en m). la cantidad de números con n dígitos que se pueden agregar en un principio es (10^n - m) sumamos eso a la respuesta, updateamos m a 10^n, sumamos uno a n y repetimos mientras no nos pasemos de w.
-</details>
-<details> 
-  <summary>Solución + código</summary>
-  Cuando agregar más nos haría pasarnos de w sumamos (w - costo hasta ahora) / (n * k) (que es la máxima cantidad de números de n dígitos que nos alcanzan) y retornamos la respuesta.
-  
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Codeforces/MakingSequencesIsFun.py">Código de ejemplo Python</a>
-  
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Codeforces/MakingSequencesIsFun.cpp">Código de ejemplo C++</a>
-</details>
-
-### J - Hyperset
-<details> 
-  <summary>Hint</summary>
-  Podemos recorrer cada par de string en el input en  O(N^2), para cada par podemos determinar únicamente cuál sería el tercero que armaría un set con estos, por cada caracter si son iguales el tercero debe ser igual y si son distintos el tercero debe tener el que falta, luego basta chequear si el string armado estaba en el input (esto se puede hacer rápido con un set). La complejidad si es bien implementado de esta solución es de O(k * N^2 * log(N)) que pasa en el tiempo.
-</details>
-<details> 
-  <summary>Solución + código</summary>
-  Implementar el hint.
-  
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Codeforces/Hyperset.py">Código de ejemplo Python</a>
-  
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Codeforces/Hyperset.cpp">Código de ejemplo C++</a>
+  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Matcomgrader/JumpingGrasshopper.cpp">Código de ejemplo</a>
 </details>
 
 <!-- <details> 
