@@ -18,4 +18,11 @@ Agosto 27, 14 días, [link a **contest**](https://vjudge.net/contest/455777)\\
 **Puntaje Mínimo Esperado**: ?\\
 **Hints** y **códigos de ejemplo**: _pending_
 
+## Contest 3
+Septiembre 03, 14 días, [link a **contest**](https://vjudge.net/contest/391596)\\
+**Tópicos**: [Segment Tree, Fenwick Tree, Sparse Table](resources/data_structures)\\
+**Puntos**: ?, ?, ?, ?, ?, ?, ?, ?\\
+**Puntaje Mínimo Esperado**: ?\\
+**Hints** y **códigos de ejemplo**: _pending_
+
 [Index](index) > ```{{page.title}}```
