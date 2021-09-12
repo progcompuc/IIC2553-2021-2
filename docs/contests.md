@@ -21,9 +21,9 @@ Agosto 27, 14 días, [link a **contest**](https://vjudge.net/contest/455777)\\
 ## Contest 3
 Septiembre 03, 14 días, [link a **contest**](https://vjudge.net/contest/456616)\\
 **Tópicos**: [Segment Tree, Fenwick Tree, Sparse Table](resources/data_structures)\\
-**Puntos**: ?, ?, ?, ?, ?, ?, ?, ?\\
-**Puntaje Mínimo Esperado**: ?\\
-**Hints** y **códigos de ejemplo**: _pending_
+**Puntos**: 4, 4, 5, 3, 2, 3, 3, 7\\
+**Puntaje Mínimo Esperado**: 5\\
+**Hints** y **códigos de ejemplo**: [link](hints/contest3)
 
 ## Contest 4
 Septiembre 09, 14 días, [link a **contest**](https://vjudge.net/contest/457527)\\
