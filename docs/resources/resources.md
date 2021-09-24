@@ -35,7 +35,7 @@ title: Recursos
   - [Apuntes USACO](https://github.com/bqi343/USACO) **\<\<\<\<\<\<\< BRUTAL, ESTOS APUNTES SON DEMASIADO BUENOS**
   - [Apuntes Benjamin Rubio (ex seleccionado PUC)](https://github.com/BenjaminRubio/CompetitiveProgramming)
   - [ICPC Team Notebook. Team "UNC - Gracias Demetrio"](https://github.com/mhunicken/icpc-team-notebook-el-vasito/tree/master) **\<\<\<\<\<\<\< MUY BUENOS TAMBIÉN**
-  - [Apuntes ICPC Universidad de Chile (C++)](https://docs.google.com/document/d/1rcex_saP4tExbbU62qGUjR3eenxOh-50i9Y45WtHkc4/edit) **\<\<\< MUY BUENOS **
+  - [Apuntes ICPC Universidad de Chile (C++)](https://docs.google.com/document/d/1rcex_saP4tExbbU62qGUjR3eenxOh-50i9Y45WtHkc4/edit)
   - <https://github.com/kth-competitive-programming/kactl>
   - [Apuntes ICPC de Robinson Castro et al (C++)](https://docs.google.com/document/d/1pan53PU9_PIrPPVyNrbfXIAU-B6YnIaSBcB9lP9j0jE/edit)
   - [Apuntes ICPC de Ignacio Hermosilla (C++)](https://github.com/ignaciohermosillacornejo/apuntes_icpc)
