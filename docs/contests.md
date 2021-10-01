@@ -39,4 +39,11 @@ Septiembre 24, 14 días, [link a **contest**](https://vjudge.net/contest/459343)
 **Puntaje Mínimo Esperado**: ?\\
 **Hints** y **códigos de ejemplo**: _pendiente_
 
+## Contest 6
+Septiembre 24, 14 días, [link a **contest**](https://vjudge.net/contest/460325)\\
+**Tópicos**: [Grafos: SCC, Aristas de Corte y Puntos de Articulación](resources/graphs)\\
+**Puntos**: ?, ?, ?, ?, ?, ?, ?, ?\\
+**Puntaje Mínimo Esperado**: ?\\
+**Hints** y **códigos de ejemplo**: _pendiente_
+
 [Index](index) > ```{{page.title}}```
