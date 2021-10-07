@@ -35,8 +35,8 @@ Septiembre 09, 14 días, [link a **contest**](https://vjudge.net/contest/457527)
 ## Contest 5
 Septiembre 24, 14 días, [link a **contest**](https://vjudge.net/contest/459343)\\
 **Tópicos**: [Grafos: MST (minimum spanning tree) y LCA (lowest common ancestor)](resources/graphs)\\
-**Puntos**: ?, ?, ?, ?, ?, ?, ?, ?\\
-**Puntaje Mínimo Esperado**: ?\\
+**Puntos**: 3, 6, 4, 5, 2, 4, 4, 3\\
+**Puntaje Mínimo Esperado**: 5\\
 **Hints** y **códigos de ejemplo**: _pendiente_
 
 ## Contest 6
