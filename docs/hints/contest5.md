@@ -50,6 +50,7 @@ title: contest 5 - hints y códigos de ejemplo
   Primero encontramos un MST original y luego para cada arista (u, v) tendremos: Si estaba ya en el MST no hacemos cambies y retornamos el valor del MST original. Si no está en el MST original basta con encontrar el valor de la mayor arista en el camino entre u y v en el MST original, el valor del MST forzado será el el valor original más el de la arista forzada menos el de la encontrada en el camino. Para encontrar la mayor arista en un camino del MST basta con aplicar binary lifting en un LCA.
   <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Codeforces/MinimumSpanningTreeForEachEdge.cpp">Código de ejemplo</a>
 </details>
+
 ### E - Minimum Spanning Tree
 <details> 
   <summary>Hint</summary>
