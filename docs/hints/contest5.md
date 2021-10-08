@@ -4,107 +4,101 @@ title: contest 5 - hints y códigos de ejemplo
 
 [Index](../index) > [Contests](../contests) > [Contest 5](../contests#contest-5) > ```{{page.title}}```
 
-### A - Map Colouring
+### A - Lowest Common Ancestor
 <details> 
   <summary>Hint</summary>
-  Podemos crear un backtracking que nos responda si es posible colorear el mapa con a lo más k colores, para esto solo basta decidir un color entre 1 y k para cada país de forma que no coincida con sus vecinos.
+  Problema de implementación directa de LCA.
 </details>
 <details> 
   <summary>Solución + código</summary>
-  Si usamos un backtracking que nos responda según lo especificado en el hint, basta probar con los números entre 1 a 4 como máxima cantidad de colores e imprimir el primero que funcione, si ninguno lo hace imprimimos "many".
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Kattis/MapColouring.cpp">Código de ejemplo</a>
+  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/SPOJ/LowestCommonAncestor.cpp">Código de ejemplo</a>
 </details>
 
-### B - A problem of Backtracking
+### B - Edges in MST
 <details> 
   <summary>Hint</summary>
-  Podemos armar un backtracking que vaya número por número viendo en que lugar se agrega a la suma en forma de función solve(indice, suma actual), para cada dígito, debemos ver si lo agragamos como unidad, decena, centena, etc...
+  En el algoritmo de kruskal para obtener el MST de un grafo, se procesan las aristas en orden de pesos y viendo la conectividad se llega siempre a la solución. La única parte en que podría haber más de una solución para un MST es si hay más de una arista con el mismo peso (y por tanto el procesamiento en kruskal es arbitrario en orden). Piensen en una forma de procesar las aristas con mismo peso simultáneamente para ver si cada una puede ser parte de una solución.
 </details>
 <details> 
   <summary>Solución + código</summary>
-  Usando el hint, si en algún momento luego de pasar por todos los índices se tiene una suma menor a K retornamos hacia atrás quedando guardado las posiciones donde funcionó.
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/SPOJ/AProblemOfBacktracking.cpp">Código de ejemplo</a>
+  Basta con usar el hint y simular el algoritmo de kruskal pero procesando todas las aristas del mismo peso simultáneamente. Si hay más de una aceptada del peso entonces es al menos en un MST (at least one), para estar en todos los MST posibles se debe cumplir además que sin usarla el grafo queda desconexo necesarimente, para eso basta encontrar las aristas de corte en cada paso. Si no es aceptada es none.
+  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Codeforces/EdgesInMST.cpp">Código de ejemplo</a>
 </details>
 
-### C - ALL IZZ WELL
+### C - Tree 2
 <details> 
-  <summary>Hint</summary>
-  Si fijamos un punto de partida en la matriz, entonces podemos hacer backtracking para explorar todo el universo de posibles caminos válidos que forman el string "ALLIZZWELL" que comienzan en esa posición. Para ello, notar que en cada paso tenemos que ir decidiendo cuál va a ser nuestra siguiente celda.
+  <summary>Hint 1</summary>
+  Si supieramos cual es el nodo más lejano a nosotros, bastaría con ver si la distancia entre yo y el es mayor o igual a k, de serlo devolvemos el k-ésimo nodo en el camino y si no no existe nodo que cumpla lo pedido. Lamentablemente no podemos sacar distancias entre todos los nodos en tiempo, piensen en una forma de poder saber uno a mayor distancia rápidamente.
 </details>
 <details> 
-  <summary>Solución + código</summary>
-  Hacemos un doble for iterando sobre todas las celdas. Por cada celda, asumimos que dicha celda es nuestro punto de partida y lanzamos un backtracking para encontrar un camino que forme el string "ALLIZZWELL". En cada llamada de la función backtracking verificamos si la celda en que estamos parados tiene el caracter que corresponde al índice actual en el que vamos en "ALLIZZWELL". Luego intentamos completar el resto del path recursivamente llamando la función de backtracking sobre alguna de las 8 celdas adyacentes (siempre y cuando la celda adyacente no haya sido visitada ya, eso se puede chequear con una matriz booleana auxiliar). Si en algún momento un backtracking retorna true, se puede, si todos los backtrackings retornaron false, no se puede. 
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/SPOJ/ALLIZZWELL.cpp">Código de ejemplo</a>.
-</details>
-
-### D - 8 Queens Chess Problem
-<details> 
-  <summary>Hint</summary>
-  Podemos iterar en el backtracking sobre todas las celdas intentando poner una reina, una función solve(fila, columna, número de reinas hasta ahora) lograría esto, cada vez que ponemos una reina marcamos las celdas que ataca como ocupadas y continuamos revisando. (Tener cuidado de desmarcar luego de terminar de revisar un subarbol, para marcar basta sumar 1 a las celdas y desmarcar restar 1).
-</details>
-<details> 
-  <summary>Solución + código</summary>
-  Si en algún momento llegamos a poner 8 reinas guardamos las posiciones en un set de respuesta y continuamos el backtracking.
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/UVA/8QueensChessProblem.cpp">Código de ejemplo</a>.
-</details>
-
-### E - Sum it up
-<details> 
-  <summary>Hint</summary>
-  Podemos armar una función de backtracking solve(indice, suma actual) que itere sobre los números de mayor a menor viendo si los agrega a la suma o no.
-</details>
-<details> 
-  <summary>Solución + código</summary>
-  Ocuoando el hint, si en algún momento la suma es exactamente lo que queremos guardamos los números elegidos en un set de respuesta para devolver las posibilidades de mayor a menor lexicográficamente. Ojo con no seguir explorando una vez que la suma supera el objetivo.
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Otros/SumItUp.cpp">Código de ejemplo</a>.
-</details>
-
-### F - Limited Correspondence
-<details> 
-  <summary>Hint</summary> 
-  Notar que por la cantidad de palabras tenemos el tiempo suficiente para probar cada par de palabras en cada posición del 1 al 11 (en el peor caso), de esta forma podemos detectar todas las posibles soluciones y guardar la "mejor" según enunciado.
-</details>
-<details> 
-  <summary>Solución + código</summary>
-  Una posible solución consiste en realizar un backtracking sobre el orden en el que vamos tomando los pares, cada vez que en la construcción de este orden tengamos que las dos palabras parciales son iguales, no seguimos agregando, pues ninguna solución óptima puede ser más larga. Cada vez que tengamos una solución la comparamos con la mejor hasta el momento y devolvemos la mejor al final. Tener cuidado en la implementación de ser eficiente en el manejo de los strings, comparaciones extras y mal manejo de los updates en los strings parciales puede llevar a TLE en el problema.
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Kattis/LimitedCorrespondence.cpp">Código de ejemplo</a>
-</details>
-
-### G - Vitamins
-<details> 
-  <summary>Hint</summary>
-  Para hacerlo con backtracking, podemos pensar que por cada jugo tenemos que tomar la decisión de comprarlo o no. Esto naturalmente nos da un árbol de decisiones. Explorar todas las ramas nos daría tiempo O(2^N), así que la idea es usar muy buenas podas.
-</details>
-<details> 
-  <summary>Solución + código</summary>
-  Hacemos backtracking según el hint. Como podas, podemos detectar cuando ya tenemos todas las vitaminas y cortar la búsqueda, también podemos sólo considerar la opción de comprar un jugo sólo si dicho jugo aporta vitaminas nuevas que no hemos visto antes, y también podemos tener una variable global con el costo más barato visto a la fecha, y sólo comprar un jugo si la solución parcial que estamos armando tiene un costo menor estricto al de la mejor solución a la fecha.
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Codeforces/Vitamins.cpp">Código de ejemplo</a>
-</details>
-
-### H - Tight-Fit Sudoku
-<details> 
-  <summary>Hint</summary>
-  Este es un backtracking clásico donde debemos ir probando los números en cada celda hasta generar una configuración adecuada según el enunciado. Una forma de acelerar el código es no almacenar los números ocupados por fila/columna/subgrilla en arreglos o set y ocupar bits y bitwise operations.
-</details>
-<details> 
-  <summary>Solución + código</summary>
-  La solucion consiste en tener bits asociados a cada columna/fila/subgrilla que almacenan los números que ya hemos ocupado. Luego usamos backtracking para provar distintos valores en las celdas del sudoku. Mientras se tenga cuidado de no olvidar alguna de las reglas, el código es bastante directo.
-  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Kattis/Tight-FitSudoku.cpp">Código de ejemplo</a>
-</details>
-
-### I - Magical Mystery Knight's Tour
-<details> 
-  <summary>Hint 1</summary> 
-  Para ver este problema como backtracking se puede plantear como un problema de decidir el camino del caballo posición por posición evitando repetir y coincidiendo con los pasos predeterminados por el input. La idea es probar todos los caminos que nos lleven al siguiente número determinado con las celdas disponibles. Ojo que es necesario usar buenas podas para pasar en el tiempo límite. 
+  <summary>Hint 2</summary>
+  Podemos obtener 2 nodos que esten lo más lejos posible uno del otro en el árbol. Basta con hacer 2 dfs ambos encontrando nodos más lejanos, el primero de un nodo cualquiera y el segundo del nodo encontrado más lejos en el primero (así encontramos el 2o). Estos dos nodos serán extremos de un diámetro de un árbol y es más, podemos demostrar que para cualquier nodo (u) en el árbol, se cumple que uno de los 2 nodos encontrados es lo más lejano a u posible. Usando esto y el hint 1 estamos casi listos. Sólo falta poder obtener distancia entre nodos y el k-ésimo en un camino rápidamente.
 </details>
 <details>
-  <summary>Hint 2</summary> 
-  Podemos notar que al final del proceso todas las filas y columnas deben sumar 260. Una buena poda para este problema es evitar continuar con una exploración si no es posible llegar a exactamente 260 en alguna de las filas o columnas del tablero con los números restantes. Para esto basta tener guardadas las sumas de los números ya determinados en cada fila/columna y ver si el rango de posibles valores a los que puede llegar cada una con los números restantes contiene a 260. Si no lo hace podemos hacer "backtrack" sin riesgo a no encontrar la solución.
+  <summary>Solución + código</summary>
+  Para hacer lo último del hint 2 basta usar LCA, la distancia entre u y v es simplemente las profundidades de ambos nodos sumadas menos la profundidad del lca entre ellos. Para obtener el k-ésimo nodo por otro lado basta hacer binary lifting usando la información de la sparse table de ancestros en el LCA. La complejidad final de este algoritmo es O(N) por los dfs iniciales más O(Q log N) por las queries usando LCA.
+  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Timus/Tree2.cpp">Código de ejemplo</a>
+</details>
+
+### D - Minimum spanning tree for each edge
+<details> 
+  <summary>Hint</summary>
+  Se puede demostrar que dado un MST, para obtener el MST de un grafo forzando la aparición de una arista (e), siempre existirá una arista (f) en el MST original tal que el óptimo forzando e, es dado por MST - {f} + {e}. Luego basta encontrar el valor de esta arista f para cada arista a forzar.
 </details>
 <details> 
   <summary>Solución + código</summary>
-  La solución consiste en realizar lo expresado en los hints. Para recorrer el tablero de forma óptima se pueden guardar los movimientos del cabayo en un arreglo y probar cada uno de ellos al realizar el backtracking. Guardamos sumas acumuladas por filas y columnas y realizamos las podas adecuadas. OJO: En este problema consideraremos que con pasar 51/52 tests cases se acepta la solución, esto porque el tiempo límite del judge es bastante ajustado.
-  <a href="https://github.com/PabloMessina/Competitive-Programming-Material/blob/master/Solved%20problems/kattis/MagicalMysterKnightsTour.cpp">Código de ejemplo</a>
+  Primero encontramos un MST original y luego para cada arista (u, v) tendremos: Si estaba ya en el MST no hacemos cambies y retornamos el valor del MST original. Si no está en el MST original basta con encontrar el valor de la mayor arista en el camino entre u y v en el MST original, el valor del MST forzado será el el valor original más el de la arista forzada menos el de la encontrada en el camino. Para encontrar la mayor arista en un camino del MST basta con aplicar binary lifting en un LCA.
+  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/Codeforces/MinimumSpanningTreeForEachEdge.cpp">Código de ejemplo</a>
+</details>
+### E - Minimum Spanning Tree
+<details> 
+  <summary>Hint</summary>
+  Problema de implementación directa de MST.
+</details>
+<details> 
+  <summary>Solución + código</summary>
+  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/SPOJ/MST.cpp">Código de ejemplo</a>
+</details>
+
+### F - Roads in HackerLand
+<details> 
+  <summary>Hint 1</summary>
+  Notemos que en vez de considerar el grafo completo, basta considerar el MST obtenido al usar los C_i como pesos (en vez de 2^{C_i}). Esto pues si obtenemos el MST ordenando agregando desde las aristas de menor peso, entonces cualquier arista que no esté en el MST será subóptima, pues si no fue agregada al MST, por la construcción de Kruskal debe existir un camino entre los nodos que une con sólo costos estrictamente menores. Y como en potencias de 2 distintas se cumple que la suma de potencias menores a k siempre es menor que 2^k, cualquiera de estos caminos será óptimo frente a pasar por la arista que no está en el MST.
+</details>
+<details> 
+<summary>Hint 2</summary>
+  Usando el MST del grafo, para obtener la solución tenemos que saber la suma de todas las distancias de pares de nodos en binario. Notemos que podemos obtener las veces que cada arista en el MST será usada usando un par de dfs. Primero usamos un dfs que precalcule los tamaños de cada subárbol y el segundo dfs ocupará esos valores para calcular cuantas veces se usa cada arista en el valor pedido (las veces que se usa una arista entre u y v es el tamaño del subárbol de v (S_v) multiplicado por su complemento N - S_v).
+</details>
+<details> 
+  <summary>Solución + código</summary>
+  Teniendo los valores del Hint 2 sólo queda obtener el número binario, como cada arista tiene un valor de potencia de 2 distinto, si guardamos los valores mencionados anteriormente en un arreglo indexado por las potencias C_i, podemos convertir este arreglo en la respuesta binaria acumulando hacia arriba la división por dos del valor de cada celda (dejando registrado el resto). El arreglo resultante será precisamente el número binario pedido.
+  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/HackerRank/RoadsInHackerLand.cpp">Código de ejemplo</a>
+</details>
+
+### G - BMW
+<details> 
+  <summary>Hint 1</summary>
+  Notemos que el camino que buscamos es aquel donde el peso de la arista de menor peso sea máximo. Es decir, el camino con aristas de mayor peso (no necesariamente la suma será mayor, sino que el mínimo es mayor).
+</details>
+<details> 
+  <summary>Hint 2</summary>
+  Se puede demostrar que todas las aristas del camino que buscamos estarán presentes en el Maximum Spanning Tree del grafo dado. Para encontrar el Maximum Spaning Tree basta ocupar el mismo algoritmo visto para el mínimo pero ordenando las arístas de mayor a menor peso.
+</details>
+<details> 
+  <summary>Solución + código</summary>
+  La solución consiste en implementar un dfs que busque el camino con mayor mínimo, este dfs sólo funciona en tiempo lineal si el grafo sobre el que trabaja es un árbol sin ciclos, por eso trabajamos sobre el Maximum Spanning Tree según el hint 2.
+  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/SPOJ/BMW.cpp">Código de ejemplo</a>
+</details>
+
+### H - Transportation system
+<details> 
+  <summary>Hint</summary>
+  Para encontrar la cantidad de estados basta encontrar la cantidad de componentes conexas en el grafo implícito que sólo contiene aristas entre ciudades a distancia menor a r. Buscar componentes conexas se puede hacer fácilmente con un DFS que marque visitados. Piensen en una forma de buscar el resto con lo visto en clases.
+</details>
+<details> 
+  <summary>Solución + código</summary>
+  Para encontrar la menor extensión de caminos basta aplicar MST sobre el grafo implícito donde todos son unidos con todos, la única diferencia es que en vez de acumular las distancias en una variable global, debemos acumular por separado aquellos costos de caminos y trenes.
+  <a href="https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Problems/UVA/TransportationSystem.cpp">Código de ejemplo</a>
 </details>
 
 <!-- <details> 
