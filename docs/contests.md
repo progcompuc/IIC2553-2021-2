@@ -40,10 +40,17 @@ Septiembre 24, 14 días, [link a **contest**](https://vjudge.net/contest/459343)
 **Hints** y **códigos de ejemplo**: [link](hints/contest5)
 
 ## Contest 6
-Septiembre 24, 14 días, [link a **contest**](https://vjudge.net/contest/460325)\\
+Octubre 01, 14 días, [link a **contest**](https://vjudge.net/contest/460325)\\
 **Tópicos**: [Grafos: SCC, Aristas de Corte y Puntos de Articulación](resources/graphs)\\
 **Puntos**: 7, 3, 5, 3, 3, 4, 2, 5\\
 **Puntaje Mínimo Esperado**: 5\\
 **Hints** y **códigos de ejemplo**: [link](hints/contest6)
+
+## Contest 7
+Octubre 08, 14 días, [link a **contest**](https://vjudge.net/contest/461489)\\
+**Tópicos**: [Grafos: Dinic y Flujo Máximo](resources/graphs)\\
+**Puntos**: ?, ?, ?, ?, ?, ?, ?, ?\\
+**Puntaje Mínimo Esperado**: ?\\
+**Hints** y **códigos de ejemplo**: _pending_
 
 [Index](index) > ```{{page.title}}```
