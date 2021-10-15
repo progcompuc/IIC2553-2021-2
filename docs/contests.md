@@ -53,4 +53,11 @@ Octubre 08, 14 días, [link a **contest**](https://vjudge.net/contest/461489)\\
 **Puntaje Mínimo Esperado**: ?\\
 **Hints** y **códigos de ejemplo**: _pending_
 
+## Contest 8
+Octubre 22, 21 días (por semana receso), [link a **contest**](https://vjudge.net/contest/462750)\\
+**Tópicos**: [Strings: Rolling Hashing, Trie](resources/strings)\\
+**Puntos**: ?, ?, ?, ?, ?, ?, ?, ?\\
+**Puntaje Mínimo Esperado**: ?\\
+**Hints** y **códigos de ejemplo**: _pending_
+
 [Index](index) > ```{{page.title}}```
