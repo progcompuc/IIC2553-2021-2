@@ -49,8 +49,8 @@ Octubre 01, 14 días, [link a **contest**](https://vjudge.net/contest/460325)\\
 ## Contest 7
 Octubre 08, 14 días, [link a **contest**](https://vjudge.net/contest/461489)\\
 **Tópicos**: [Grafos: Dinic y Flujo Máximo](resources/graphs)\\
-**Puntos**: ?, ?, ?, ?, ?, ?, ?, ?\\
-**Puntaje Mínimo Esperado**: ?\\
+**Puntos**: 5, 5, 6, 3, 4, 5, 4, 4\\
+**Puntaje Mínimo Esperado**: 5\\
 **Hints** y **códigos de ejemplo**: _pending_
 
 ## Contest 8
