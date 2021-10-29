@@ -56,7 +56,7 @@ Octubre 08, 14 días, [link a **contest**](https://vjudge.net/contest/461489)\\
 ## Contest 8
 Octubre 22, 21 días (por semana receso), [link a **contest**](https://vjudge.net/contest/462750)\\
 **Tópicos**: [Strings: Rolling Hashing, Trie](resources/strings)\\
-**Puntos**: 8, 4, 4, 5, 3, 5, 3, 4\\
+**Puntos**: 8, 4, 5, 3, 5, 3, 4, 4\\
 **Puntaje Mínimo Esperado**: 5\\
 **Hints** y **códigos de ejemplo**: [link](hints/contest8)
 
