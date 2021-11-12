@@ -74,4 +74,11 @@ November 05, 16 días, [link a **contest**](https://vjudge.net/contest/467069)\\
 **Puntaje Mínimo Esperado**: ?\\
 **Hints** y **códigos de ejemplo**: _pending_
 
+## Contest 11
+November 12, 16 días, [link a **contest**](https://vjudge.net/contest/468442)\\
+**Tópicos**: [Geometría: sweep line](resources/geometry)\\
+**Puntos**: ?, ?, ?, ?, ?, ?, ?, ?\\
+**Puntaje Mínimo Esperado**: ?\\
+**Hints** y **códigos de ejemplo**: _pending_
+
 [Index](index) > ```{{page.title}}```
