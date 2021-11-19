@@ -63,9 +63,9 @@ Octubre 22, 21 días (por semana receso), [link a **contest**](https://vjudge.ne
 ## Contest 9
 Octubre 29, 14 días, [link a **contest**](https://vjudge.net/contest/465661)\\
 **Tópicos**: [Strings: KMP, Suffix Array](resources/strings)\\
-**Puntos**: ?, ?, ?, ?, ?, ?, ?, ?\\
-**Puntaje Mínimo Esperado**: ?\\
-**Hints** y **códigos de ejemplo**: _pending_
+**Puntos**: 4, 3, 4, 7, 6, 4, 2, 10\\
+**Puntaje Mínimo Esperado**: 5\\
+**Hints** y **códigos de ejemplo**: [link](hints/contest9)
 
 ## Contest 10
 November 05, 16 días, [link a **contest**](https://vjudge.net/contest/467069)\\
