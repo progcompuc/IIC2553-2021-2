@@ -81,4 +81,11 @@ November 12, 16 días, [link a **contest**](https://vjudge.net/contest/468442)\\
 **Puntaje Mínimo Esperado**: ?\\
 **Hints** y **códigos de ejemplo**: _pending_
 
+## Contest 12
+November 19, 16 días, [link a **contest**](https://vjudge.net/contest/469697)\\
+**Tópicos**: [Geometría: convex hull, teorema de green y más ...](resources/geometry)\\
+**Puntos**: ?, ?, ?, ?, ?, ?, ?, ?\\
+**Puntaje Mínimo Esperado**: ?\\
+**Hints** y **códigos de ejemplo**: _pending_
+
 [Index](index) > ```{{page.title}}```
