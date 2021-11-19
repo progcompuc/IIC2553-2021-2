@@ -70,9 +70,9 @@ Octubre 29, 14 días, [link a **contest**](https://vjudge.net/contest/465661)\\
 ## Contest 10
 November 05, 16 días, [link a **contest**](https://vjudge.net/contest/467069)\\
 **Tópicos**: [Geometría: producto punto, producto cruz](resources/geometry)\\
-**Puntos**: ?, ?, ?, ?, ?, ?, ?, ?\\
-**Puntaje Mínimo Esperado**: ?\\
-**Hints** y **códigos de ejemplo**: _pending_
+**Puntos**: 3, 7, 6, 5, 2, 4, 4, 4\\
+**Puntaje Mínimo Esperado**: 5\\
+**Hints** y **códigos de ejemplo**: [link](hints/contest10)
 
 ## Contest 11
 November 12, 16 días, [link a **contest**](https://vjudge.net/contest/468442)\\
