@@ -95,5 +95,11 @@ November 26, 16 días, [link a **contest**](https://vjudge.net/contest/470822)\\
 **Puntaje Mínimo Esperado**: ?\\
 **Hints** y **códigos de ejemplo**: _pending_
 
+## Contest 14
+November 26, 16 días, [link a **contest**](https://vjudge.net/contest/471827)\\
+**Tópicos**: [Mate (GCD extendido, CRT y más)](resources/math)\\
+**Puntos**: ?, ?, ?, ?, ?, ?, ?, ?\\
+**Puntaje Mínimo Esperado**: ?\\
+**Hints** y **códigos de ejemplo**: _pending_
 
 [Index](index) > ```{{page.title}}```
