@@ -77,29 +77,29 @@ November 05, 16 días, [link a **contest**](https://vjudge.net/contest/467069)\\
 ## Contest 11
 November 12, 16 días, [link a **contest**](https://vjudge.net/contest/468442)\\
 **Tópicos**: [Geometría: sweep line](resources/geometry)\\
-**Puntos**: ?, ?, ?, ?, ?, ?, ?, ?\\
-**Puntaje Mínimo Esperado**: ?\\
+**Puntos**: 2, 4, 5, 5, 6, 4, 4, 4\\
+**Puntaje Mínimo Esperado**: 5\\
 **Hints** y **códigos de ejemplo**: _pending_
 
 ## Contest 12
 November 19, 16 días, [link a **contest**](https://vjudge.net/contest/469697)\\
 **Tópicos**: [Geometría: convex hull, teorema de green y más ...](resources/geometry)\\
-**Puntos**: ?, ?, ?, ?, ?, ?, ?, ?\\
-**Puntaje Mínimo Esperado**: ?\\
+**Puntos**: 3, 4, 5, 4, 4, 4, 4, 5\\
+**Puntaje Mínimo Esperado**: 5\\
 **Hints** y **códigos de ejemplo**: _pending_
 
 ## Contest 13
 November 26, 16 días, [link a **contest**](https://vjudge.net/contest/470822)\\
 **Tópicos**: [Mate (GCD, Números Primos, Aritmética Modular)](resources/math)\\
-**Puntos**: ?, ?, ?, ?, ?, ?, ?, ?\\
-**Puntaje Mínimo Esperado**: ?\\
+**Puntos**: 3, 3, 4, 5, 5, 5, 5, 6\\
+**Puntaje Mínimo Esperado**: 5\\
 **Hints** y **códigos de ejemplo**: _pending_
 
 ## Contest 14
 November 26, 16 días, [link a **contest**](https://vjudge.net/contest/471827)\\
 **Tópicos**: [Mate (GCD extendido, CRT y más)](resources/math)\\
-**Puntos**: ?, ?, ?, ?, ?, ?, ?, ?\\
-**Puntaje Mínimo Esperado**: ?\\
+**Puntos**: 3, 3, 4, 4, 5, 4, 3, 4\\
+**Puntaje Mínimo Esperado**: 5\\
 **Hints** y **códigos de ejemplo**: _pending_
 
 [Index](index) > ```{{page.title}}```
